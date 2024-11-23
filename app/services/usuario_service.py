@@ -17,8 +17,8 @@ class UsuarioService:
                 print("Usuário já cadastrado")
                 return
 
-            self.repository.salvar_usuario(usuario)
-            print("Usuario salvo com sucesso")
+            self.repository.criar_usuario(usuario)
+            print("Usuario criado com sucesso")
         except TypeError as e:
             print(f"Erro ao salvar o arquivo: {e}")
         except Exception as e:
@@ -49,8 +49,8 @@ class UsuarioService:
                 cadastro.nome = input("Digite o novo nome: ")
                 cadastro.email = input("Digite o novo e-mail: ")
                 cadastro.senha = input("Digite a nova senha: ")
-                usuario = Usuario(nome=cadastro.nome, email=cadastro.email, senha=cadastro.senha)
-                self.repository.salvar_usuario(usuario)
+                
+                self.repository.atualizar_usuario(cadastro)
                 print("Usuário atualizado com sucesso")
                 return
             
