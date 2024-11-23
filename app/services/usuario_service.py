@@ -24,16 +24,58 @@ class UsuarioService:
         except Exception as e:
             print(f"Ocorreu um erro inesperado: {e}")
 
-    # def deletar_aluno(self):
-    #     try:
+    def deletar_usuario(self):
+        try:
+            email = input("Digite o email do usuário que deseja deletar: ")
+
+            cadastro = self.repository.pesquisar_usuario_por_email(email)
+            if cadastro:
+                self.repository.deletar_usuario(cadastro)
+                print("Usuário deletado com sucesso")
+                return
+           
+            print("Usuário não encontrado")
+        except TypeError as e:
+            print(f"Erro ao deletar o arquivo: {e}")
+        except Exception as e:
+            print(f"Ocorreu um erro inesperado: {e}")
+
+    def atualizar_usuario(self):
+        try:
+            email = input("Digite o email do usuário que deseja atualizar: ")
+
+            cadastro = self.repository.pesquisar_usuario_por_email(email)
+            if cadastro:
+                cadastro.nome = input("Digite o novo nome: ")
+                cadastro.email = input("Digite o novo e-mail: ")
+                cadastro.senha = input("Digite a nova senha: ")
+                usuario = Usuario(nome=cadastro.nome, email=cadastro.email, senha=cadastro.senha)
+                self.repository.salvar_usuario(usuario)
+                print("Usuário atualizado com sucesso")
+                return
             
-    #         aluno = 
-    #         self.repository.deletar_aluno(aluno)
-    #         print("Aluno deletado com sucesso")
-    #     except TypeError as e:
-    #         print(f"Erro ao deletar o arquivo: {e}")
-    #     except Exception as e:
-    #         print(f"Ocorreu um erro inesperado: {e}")
+            print("Usuário não encontrado")
+        except TypeError as e:
+            print(f"Erro ao deletar o arquivo: {e}")
+        except Exception as e:
+            print(f"Ocorreu um erro inesperado: {e}")
+
+    def pesquisar_usuario(self):
+        try:
+            email = input("Digite o email do usuário que deseja pesquisar: ")
+
+            cadastro = self.repository.pesquisar_usuario_por_email(email)
+            if cadastro:
+                print("Dados do usuário: ")
+                print(f"\n Id: {cadastro.id} | Nome: {cadastro.nome} | Email: {cadastro.email}")
+                return
+            
+            print("Usuário não encontrado")
+        except TypeError as e:
+            print(f"Erro ao deletar o arquivo: {e}")
+        except Exception as e:
+            print(f"Ocorreu um erro inesperado: {e}")
+
 
     def listar_todos_usuarios(self):
         return self.repository.listar_todos_usuarios()
