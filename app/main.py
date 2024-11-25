@@ -14,7 +14,7 @@ def main():
     def menu():
         while True:
             print("======== SENAI SOLUTION =========")
-            print("BEM VINDO!\n")
+            print("BEM VINDO!")
             print("1 - Adicionar usuário \n2 - Pesquisar um usuário \n3 - Atualizar dados de um usuário \
                 \n4 - Excluir um usuário \n5 - Exibir todos os usuários cadastrados \n0 - Sair")
             
