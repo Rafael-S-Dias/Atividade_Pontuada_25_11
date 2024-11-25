@@ -21,8 +21,11 @@ def main():
             try:
                 opcao = int(input("\nSelecione a opção desejada: "))
             except ValueError:
+                os.system("cls || clear")
                 print("Comando inválido! Por favor, insira um número inteiro.")
-                return 
+                time.sleep(2)
+                continue
+                
 
             match opcao:
                 case 1:
